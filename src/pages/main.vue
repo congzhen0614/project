@@ -10,6 +10,9 @@
       <li>
         <router-link to="/geogPosition">geogPosition(获取地理位置-百度地图api)</router-link>
       </li>
+      <li>
+        <router-link to="/lazyLoad">vue懒加载</router-link>
+      </li>
     </ul>
   </div>
 </template>

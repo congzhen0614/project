@@ -1,13 +1,11 @@
 <template>
   <div id="content">
-    <v-head></v-head>
+    <v-head :title="title"></v-head>
     <div class="wrapper" ref="wrapper" :style="displayerHeight">
       <ul class="content" ref="content">
         <li class="content-list" v-for="item in data" :key="item.id">{{item.item}}</li>
       </ul>
-    </div>
-    <img class="to-top-icon" v-show="toTop" src="./toTop.png" @click="clickToTop()"/>
-  </div>
+    </div> <img class="to-top-icon" v-show="toTop" src="./toTop.png" @click="clickToTop()" /> </div>
 </template>
 <script>
 import BScroll from 'better-scroll'
@@ -18,6 +16,7 @@ export default {
   },
   data () {
     return {
+      title: 'scroll',
       displayerHeight: {
         'width': '100%',
         'height': window.innerHeight - 50 + 'px',
@@ -85,18 +84,17 @@ export default {
   }
 }
 </script>
-
 <style>
-  .content-list {
-    height: 100px;
-    line-height: 100px;
-  }
-  .to-top-icon {
-      position: fixed;
-      width: 50px;
-      height: 50px;
-      bottom: 10px;
-      right: 10px;
-      z-index: 9;
-  }
+.content-list {
+  height: 100px;
+  line-height: 100px;
+}
+.to-top-icon {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  bottom: 10px;
+  right: 10px;
+  z-index: 9;
+}
 </style>

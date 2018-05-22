@@ -1,6 +1,6 @@
 <template>
   <div class="position">
-    <v-head></v-head>
+    <v-head :title="title"></v-head>
     <div class="locat">
       <p><span>纬度:</span>{{ lat }}</p>
       <p><span>经度:</span>{{ lon }}</p>
@@ -18,6 +18,7 @@ export default {
   },
   data () {
     return {
+      title: '百度地图api',
       lat: '',
       lon: '',
       cityName: ''

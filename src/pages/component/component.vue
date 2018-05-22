@@ -1,6 +1,6 @@
 <template>
   <div class="component">
-    <v-head></v-head>
+    <v-head :title="title"></v-head>
     <nav-list @navIndex="navIndex"></nav-list>
     <transition-group enter-active-class="animated slideInLeft" leave-active-class="animated slideOutRight">
     <!-- 过渡效果 -->
@@ -22,6 +22,7 @@ export default {
   },
   data () {
     return {
+      title: 'component组件切换',
       cutComponent: ['content-list', 'content-list', 'content-list', 'content-list', 'content-list'],
       clickType: '0'
     }
