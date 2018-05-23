@@ -1,23 +1,38 @@
 <template>
   <div id="main">
     <ul class="main-nav">
-      <li>
-        <router-link to="/scroll">scroll(BScroll插件)</router-link>
-      </li>
-      <li>
-        <router-link to="/component">component(component切换组件)</router-link>
-      </li>
-      <li>
-        <router-link to="/geogPosition">geogPosition(获取地理位置-百度地图api)</router-link>
-      </li>
-      <li>
-        <router-link to="/lazyLoad">vue懒加载</router-link>
+      <li v-for="(item, index) in menu" :key="index">
+        <router-link :to="item.router">{{ item.title }}</router-link>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+export default {
+  data () {
+    return {
+      menu: [{
+        router: '/scroll',
+        title: 'scroll(BScroll插件)'
+      }, {
+        router: '/component',
+        title: 'component(component切换组件)'
+      }, {
+        router: '/geogPosition',
+        title: 'geogPosition(获取地理位置-百度地图api)'
+      }, {
+        router: '/lazyLoad',
+        title: 'vue懒加载'
+      }, {
+        router: '/select',
+        title: 'select(多级联动)'
+      }]
+    }
+  },
+  mounted () {},
+  methods: {}
+}
 </script>
 
 <style>
