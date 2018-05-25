@@ -6,7 +6,7 @@ import scroll from '@/pages/scroll/scroll'
 import component from '@/pages/component/component'
 import geogPosition from '@/pages/position/position'
 import lazyLoad from '@/pages/lazyLoad/lazyLoad'
-import select from '@/pages/select/select'
+import shopcar from '@/pages/shopcar/shopcar'
 Vue.use(Router)
 // 设置router
 export default new Router({
@@ -37,9 +37,9 @@ export default new Router({
       component: lazyLoad
     },
     {
-      path: '/select',
-      name: 'select',
-      component: select
+      path: '/shopcar',
+      name: 'shopcar',
+      component: shopcar
     }
   ]
 })

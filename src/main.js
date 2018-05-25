@@ -4,6 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueLazyLoad from 'vue-lazyload'
+import api from './api/api.js'
+import * as custom from './store/filter/filter.js'
+Object.keys(custom).forEach(key => {
+  Vue.filter(key, custom[key])
+})
+Vue.prototype.$axios = api
 Vue.use(VueLazyLoad, {
   preLoad: 1.3,
   error: require('./assets/loading.png'),

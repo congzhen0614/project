@@ -25,8 +25,8 @@ export default {
         router: '/lazyLoad',
         title: 'vue懒加载'
       }, {
-        router: '/select',
-        title: 'select(多级联动)'
+        router: '/shopcar',
+        title: 'shoppingcar(购物车)'
       }]
     }
   },
@@ -39,5 +39,6 @@ export default {
   .main-nav li {
     height: 36px;
     line-height: 36px;
+    text-align: center;
   }
 </style>
