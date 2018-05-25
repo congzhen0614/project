@@ -7,7 +7,7 @@
           <img v-if="!checkAll" :src="check"/>
           <img v-if="checkAll" :src="checkActive"/>
         </div>
-        <p>商品</p>
+        <p>全选</p>
       </div>
       <ul>
         <li v-for="(item, index) in shoppingCarList" :key="index">
