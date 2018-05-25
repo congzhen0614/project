@@ -7,6 +7,7 @@ import component from '@/pages/component/component'
 import geogPosition from '@/pages/position/position'
 import lazyLoad from '@/pages/lazyLoad/lazyLoad'
 import shopcar from '@/pages/shopcar/shopcar'
+import saveState from '@/pages/saveState/saveState'
 Vue.use(Router)
 // 设置router
 export default new Router({
@@ -40,6 +41,11 @@ export default new Router({
       path: '/shopcar',
       name: 'shopcar',
       component: shopcar
+    },
+    {
+      path: '/saveState',
+      name: 'saveState',
+      component: saveState
     }
   ]
 })

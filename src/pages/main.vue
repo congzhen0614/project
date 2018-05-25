@@ -27,6 +27,9 @@ export default {
       }, {
         router: '/shopcar',
         title: 'shoppingcar(购物车)'
+      }, {
+        router: '/saveState',
+        title: 'saveState(储存状态)'
       }]
     }
   },
