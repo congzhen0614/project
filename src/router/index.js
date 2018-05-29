@@ -9,6 +9,7 @@ import lazyLoad from '@/pages/lazyLoad/lazyLoad'
 import shopcar from '@/pages/shopcar/shopcar'
 import saveState from '@/pages/saveState/saveState'
 import other from '@/pages/saveState/other/other'
+import upLoadImages from '@/pages/upLoadImages/upLoadImages'
 Vue.use(Router)
 // 设置router
 export default new Router({
@@ -52,6 +53,11 @@ export default new Router({
       path: '/other',
       name: 'other',
       component: other
+    },
+    {
+      path: '/upLoadImages',
+      name: 'upLoadImages',
+      component: upLoadImages
     }
   ]
 })

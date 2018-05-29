@@ -30,6 +30,9 @@ export default {
       }, {
         router: '/saveState',
         title: 'saveState(储存状态)'
+      }, {
+        router: '/upLoadImages',
+        title: 'upLoadImages(上传图片)'
       }]
     }
   },
