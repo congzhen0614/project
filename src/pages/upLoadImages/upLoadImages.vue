@@ -1,12 +1,16 @@
 <template>
-  <div class="upLoad">
+  <div class="up-load-images">
     <v-head :title="title"></v-head>
-    <ul>
-      <li class="pic-item" @click="submitPic()">
-        <input ref="file" type="file" name="image" accept="image/*" style="display: none;" @change="handleInputChange($event)">
-        <img class="pic" :src="upLoadIcon">
-      </li>
-    </ul>
+      <ul class="pic-list">
+        <li v-if="picList && picList.length" v-for="(pic, index) in picList" class="pic-item" :key="index">
+          <img class="pic" :src="pic">
+          <img class="close-icon" src="./close_icon.png" @click.prevent.stop="deleteItem(index)">
+        </li>
+        <li class="pic-item" @click="submitPic()">
+          <input ref="file" type="file" name="image" accept="image/*" style="display: none;" @change="handleInputChange($event)">
+          <img class="pic" src="./submit_pic_icon.png">
+        </li>
+      </ul>
   </div>
 </template>
 
@@ -19,7 +23,8 @@ export default {
   data () {
     return {
       title: '上传图片',
-      upLoadIcon: require('./upLoad-icon.png')
+      imgFile: {},
+      picList: []
     }
   },
   methods: {
@@ -29,7 +34,6 @@ export default {
     },
     // 监听 input 改变
     handleInputChange (event) {
-      console.log(event)
       let file = event.target.files[0]
       const imgMaxSize = 1024 * 1024 * 10 // 10MB
       // 检查文件类型
@@ -58,7 +62,7 @@ export default {
       formData.append('lastModifiedDate', file.lastModifiedDate)
       formData.append('file', file)
       // 上传图片，等接口
-      // this.uploadImg(formData)
+      this.uploadImg(formData, 1)
     },
     // 图片压缩
     transformFileToDataUrl (file) {
@@ -136,42 +140,47 @@ export default {
       // append 文件
       formData.append('file', fileOfBlob)
       // 上传图片
-      // this.uploadImg(formData)
+      this.uploadImg(formData, 2)
     },
     // 上传图片
-    uploadImg (formData) {
-      const xhr = new XMLHttpRequest()
-      // 监听进度
-      xhr.upload.addEventListener('progress', e => {
-        console.log(e.loaded / e.total)
-      }, false)
-      // 错误监听
-      xhr.addEventListener('error', () => {
-        this.Toast.fail({
-          title: '上传失败！'
-        })
-      })
-      xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4) {
-          const result = JSON.parse(xhr.responseText)
-          if (xhr.status === 200) {
-            // 上传成功
-            console.log(result)
-          } else {
-            // 上传失败
-          }
-        }
-      }
-      let _url = 'upload'
-      xhr.open('POST', _url, true)
-      xhr.send(formData)
+    uploadImg (formData, index) {
+      console.log(formData)
+      console.log(index)
+    },
+    // 删除单项
+    deleteItem (index) {
+      this.picList.splice(index, 1)
     }
   }
 }
 </script>
 
 <style>
-  ul {
+  .up-load-images {
     margin-top: 50px;
+    padding: 10px;
+  }
+  .pic-list {
+    overflow: hidden;
+  }
+  .pic-item {
+    position: relative;
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+  }
+  .pic-item img {
+    display: block;
+    height: 100%;
+    margin: 0 auto;
+  }
+  .pic-item .close-icon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: block;
+    width: 14px;
+    height: 14px;
   }
 </style>
