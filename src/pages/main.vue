@@ -33,6 +33,9 @@ export default {
       }, {
         router: '/upLoadImages',
         title: 'upLoadImages(上传图片)'
+      }, {
+        router: '/qrcode',
+        title: 'qrcode生成二维码'
       }]
     }
   },

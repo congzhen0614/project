@@ -10,6 +10,7 @@ import shopcar from '@/pages/shopcar/shopcar'
 import saveState from '@/pages/saveState/saveState'
 import other from '@/pages/saveState/other/other'
 import upLoadImages from '@/pages/upLoadImages/upLoadImages'
+import qrcode from '@/pages/qrcode/qrcode'
 Vue.use(Router)
 // 设置router
 export default new Router({
@@ -58,6 +59,11 @@ export default new Router({
       path: '/upLoadImages',
       name: 'upLoadImages',
       component: upLoadImages
+    },
+    {
+      path: '/qrcode',
+      name: 'qrcode',
+      component: qrcode
     }
   ]
 })
