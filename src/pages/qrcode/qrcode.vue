@@ -21,7 +21,7 @@ export default {
   data () {
     return {
       title: '生成二维码',
-      codeList: ['2018061301', '2018061302', '2018061303', '2018061304', '2018061305']
+      codeList: ['2018061301', '2018061302', '2018061303', '2018061304', '2018061305', 'http://www.baidu.com']
     }
   },
   mounted () {
@@ -31,15 +31,15 @@ export default {
     setCodeList () {
       this.codeList.forEach((item, index) => {
         let qrcodeList = document.getElementsByClassName('qrcode-list')[index]
-        this.qrcode(qrcodeList)
+        this.qrcode(qrcodeList, item)
       })
     },
-    qrcode (domName) {
+    qrcode (domName, item) {
       let qrcode = new QRCode(domName, {
-        text: '201806131534',
+        text: item,
         width: 100,
         height: 100,
-        colorDark: '#000',
+        colorDark: '#5573B7',
         colorLight: '#fff'
       })
       console.log(qrcode)
@@ -51,5 +51,14 @@ export default {
 <style>
 .qrcode {
   margin-top: 50px;
+}
+section {
+  padding: 20px;
+}
+.qrcode li {
+  margin-bottom: 20px;
+}
+.qrcode li:last-child {
+  margin-bottom: 0px;
 }
 </style>
