@@ -40,7 +40,8 @@ export default {
         width: 100,
         height: 100,
         colorDark: '#5573B7',
-        colorLight: '#fff'
+        colorLight: '#fff',
+        src: './avatar.jpg'
       })
       console.log(qrcode)
     }
