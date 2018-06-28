@@ -11,6 +11,9 @@ import saveState from '@/pages/saveState/saveState'
 import other from '@/pages/saveState/other/other'
 import upLoadImages from '@/pages/upLoadImages/upLoadImages'
 import qrcode from '@/pages/qrcode/qrcode'
+import images from '@/pages/images/images'
+import emit from '@/pages/emit/emit'
+import remarks from '@/pages/emit/remarks/remarks'
 Vue.use(Router)
 // 设置router
 export default new Router({
@@ -64,6 +67,19 @@ export default new Router({
       path: '/qrcode',
       name: 'qrcode',
       component: qrcode
+    },
+    {
+      path: '/images',
+      name: 'images',
+      component: images
+    }, {
+      path: '/emit',
+      name: 'emit',
+      component: emit
+    }, {
+      path: '/remarks',
+      name: 'remarks',
+      component: remarks
     }
   ]
 })

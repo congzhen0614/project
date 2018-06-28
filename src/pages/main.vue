@@ -36,6 +36,12 @@ export default {
       }, {
         router: '/qrcode',
         title: 'qrcode生成二维码'
+      }, {
+        router: '/images',
+        title: 'images平铺'
+      }, {
+        router: '/emit',
+        title: 'emit参数传递'
       }]
     }
   },
