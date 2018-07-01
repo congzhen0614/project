@@ -10,6 +10,7 @@
 
 <script>
 import head from '@/components/header/head'
+// import Bus from '@/store/bus.js'
 export default {
   components: {
     'v-head': head
@@ -24,8 +25,8 @@ export default {
   },
   methods: {
     clickSubmit () {
-      this.$root.Bus.$emit('remarks', this.remarks)
-      this.$router.go(-1)
+      this.$root.remarks = this.remarks
+      this.$router.push('/emit')
     }
   }
 }

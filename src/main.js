@@ -26,8 +26,5 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>',
-  data: {
-    Bus: new Vue()
-  }
+  template: '<App/>'
 })
