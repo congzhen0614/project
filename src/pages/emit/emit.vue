@@ -4,15 +4,11 @@
     <section>
       <p class="remarks" @click="toRemarks()">{{ remarks || '请点击输入留言内容' }}</p>
     </section>
-    <div>
-      {{ remarks }}
-    </div>
   </div>
 </template>
 
 <script>
 import head from '@/components/header/head'
-// import Bus from '@/store/bus.js'
 export default {
   components: {
     'v-head': head
@@ -20,11 +16,19 @@ export default {
   data () {
     return {
       title: 'emit参数传递',
-      remarks: '3333333'
+      remarks: ''
     }
   },
   mounted () {
-    this.remarks = this.$root.remarks
+    this.$root.Bus.$on('setRemarks', item => {
+      this.$nextTick(() => {
+        this.remarks = item
+      })
+    })
+  },
+  destroy () {
+    console.log(this.remarks)
+    this.$root.Bus.$off('remarks')
   },
   methods: {
     toRemarks () {

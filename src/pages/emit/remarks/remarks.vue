@@ -25,8 +25,8 @@ export default {
   },
   methods: {
     clickSubmit () {
-      this.$root.remarks = this.remarks
-      this.$router.push('/emit')
+      this.$root.Bus.$emit('setRemarks', this.remarks)
+      this.$router.go(-1)
     }
   }
 }
