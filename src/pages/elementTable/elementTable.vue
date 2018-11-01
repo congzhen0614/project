@@ -1,6 +1,6 @@
 <template>
   <div class="element-table">
-    <el-table :data="tableData" border @selection-change="handleSelectionChange">
+    <el-table ref="multipleTable" :data="tableData" border @select="handleSelect" @select-all="handleSelectAll">
       <el-table-column type="selection" width="45" align="center"></el-table-column>
       <el-table-column prop="date" label="日期" width="180"></el-table-column>
       <el-table-column prop="name" label="姓名" width="180"></el-table-column>
@@ -18,13 +18,14 @@
 </template>
 
 <script>
-import tableDate from '@/store/tableList/tableList.json'
+import tableData from '@/store/tableList/tableList.json'
 export default {
   name: 'element-table',
   data () {
     return {
       tableData: [],
-      selectDate: [],
+      selectData: [],
+      historyData: [],
       pages: {
         pageNum: 1,
         pageSize: 10,
@@ -38,26 +39,39 @@ export default {
   methods: {
     loadData () {
       this.tableData = []
-      this.pages.totle = tableDate.data.length
+      this.pages.totle = tableData.data.length
       let pageStart = (this.pages.pageNum - 1) * this.pages.pageSize
       for (let i = pageStart; i < pageStart + this.pages.pageSize; i++) {
-        this.tableData.push(tableDate.data[i])
+        this.tableData.push(tableData.data[i])
       }
-    },
-    handleSelectionChange (val) {
-      this.selectDate = []
-      val.forEach(item => {
-        this.selectDate.push({
-          id: item.id
-        })
+      this.$nextTick(() => {
+        if (typeof this.historyData[this.pages.pageNum] !== 'undefined') {
+          for (let i = 0; i < this.tableData.length; i++) {
+            this.historyData[this.pages.pageNum].forEach(item => {
+              if (item.id === this.tableData[i].id) {
+                this.$refs.multipleTable.toggleRowSelection(this.tableData[i], true)
+              }
+            })
+          }
+        }
       })
+    },
+    handleSelectAll (val) {
+      this.historyData[this.pages.pageNum] = val
+    },
+    handleSelect (val) {
+      this.historyData[this.pages.pageNum] = val
     },
     handleCurrentChange (val) {
       this.pages.pageNum = val
       this.loadData()
     },
     onSubmit () {
-      console.log(this.selectDate)
+      this.selectData = []
+      this.historyData.forEach(item => {
+        this.selectData = this.selectData.concat(item)
+      })
+      console.log(this.selectData)
     }
   },
   watch: {}
