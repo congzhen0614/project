@@ -14,7 +14,10 @@ import qrcode from '@/pages/qrcode/qrcode'
 import images from '@/pages/images/images'
 import emit from '@/pages/emit/emit'
 import remarks from '@/pages/emit/remarks/remarks'
+import elementTable from '@/pages/elementTable/elementTable.vue'
+
 Vue.use(Router)
+
 // 设置router
 export default new Router({
   routes: [
@@ -80,6 +83,10 @@ export default new Router({
       path: '/remarks',
       name: 'remarks',
       component: remarks
+    }, {
+      path: '/elementTable',
+      name: 'elementTable',
+      component: elementTable
     }
   ]
 })

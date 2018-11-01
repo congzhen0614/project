@@ -42,6 +42,9 @@ export default {
       }, {
         router: '/emit',
         title: 'emit参数传递'
+      }, {
+        router: '/elementTable',
+        title: 'element表格'
       }]
     }
   },

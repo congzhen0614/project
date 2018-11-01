@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueLazyLoad from 'vue-lazyload'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 import api from './api/api.js'
 import * as custom from './store/filter/filter.js'
 
@@ -12,6 +14,8 @@ Object.keys(custom).forEach(key => {
 })
 
 Vue.prototype.$axios = api
+
+Vue.use(ElementUI)
 
 Vue.use(VueLazyLoad, {
   preLoad: 1.3,
