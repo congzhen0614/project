@@ -1,6 +1,6 @@
 <template>
   <div class="element-table">
-    <el-table ref="multipleTable" :data="tableData" border @select="handleSelect" @select-all="handleSelectAll">
+    <el-table ref="multipleTable" :data="tableData" border @select="handleSelect" @select-all="handleSelect">
       <el-table-column type="selection" width="45" align="center"></el-table-column>
       <el-table-column prop="date" label="日期" width="180"></el-table-column>
       <el-table-column prop="name" label="姓名" width="180"></el-table-column>
@@ -56,25 +56,21 @@ export default {
         }
       })
     },
-    handleSelectAll (val) {
-      this.historyData[this.pages.pageNum] = val
-    },
     handleSelect (val) {
+      this.selectData = []
       this.historyData[this.pages.pageNum] = val
+      this.historyData.forEach(item => {
+        this.selectData = this.selectData.concat(item)
+      })
     },
     handleCurrentChange (val) {
       this.pages.pageNum = val
       this.loadData()
     },
     onSubmit () {
-      this.selectData = []
-      this.historyData.forEach(item => {
-        this.selectData = this.selectData.concat(item)
-      })
       console.log(this.selectData)
     }
-  },
-  watch: {}
+  }
 }
 </script>
 
