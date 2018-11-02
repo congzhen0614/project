@@ -1,5 +1,6 @@
 <template>
   <div class="element-table">
+    <el-button style="margin-bottom: 10px" size="mini" type="primary" @click="loadData">检索</el-button>
     <el-table ref="multipleTable" :data="tableData" border @select="handleSelect" @select-all="handleSelect">
       <el-table-column type="selection" width="45" align="center"></el-table-column>
       <el-table-column prop="date" label="日期" width="180"></el-table-column>
@@ -26,6 +27,7 @@ export default {
       tableData: [],
       selectData: [],
       historyData: [],
+      form: {},
       pages: {
         pageNum: 1,
         pageSize: 10,
@@ -70,6 +72,11 @@ export default {
     onSubmit () {
       console.log(this.selectData)
     }
+  },
+  watch: {
+    selectData (val) {
+      console.log(val)
+    }
   }
 }
 </script>
@@ -85,5 +92,15 @@ export default {
   }
   .element-table .el-table td, .element-table .el-table th {
     padding: 5px 0;
+  }
+  .element-table .el-input {
+    font-size: 12px;
+  }
+  .element-table .el-input__inner {
+    height: 30px;
+    line-height: 30px;
+  }
+  .element-table .el-form-item__label {
+    font-size: 12px;
   }
 </style>
