@@ -45,6 +45,9 @@ export default {
       }, {
         router: '/elementTable',
         title: 'element表格'
+      }, {
+        router: '/elementMenu',
+        title: 'element菜单'
       }]
     }
   },

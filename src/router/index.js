@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 // 获取组件
 import main from '@/pages/main'
 import scroll from '@/pages/scroll/scroll'
@@ -15,6 +16,7 @@ import images from '@/pages/images/images'
 import emit from '@/pages/emit/emit'
 import remarks from '@/pages/emit/remarks/remarks'
 import elementTable from '@/pages/elementTable/elementTable.vue'
+import elementMenu from '@/pages/elementMenu/elementMenu.vue'
 
 Vue.use(Router)
 
@@ -87,6 +89,10 @@ export default new Router({
       path: '/elementTable',
       name: 'elementTable',
       component: elementTable
+    }, {
+      path: '/elementMenu',
+      name: 'elementMenu',
+      component: elementMenu
     }
   ]
 })
