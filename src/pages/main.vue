@@ -48,6 +48,12 @@ export default {
       }, {
         router: '/elementMenu',
         title: 'element菜单'
+      }, {
+        router: '/elementTab',
+        title: 'elementTabs'
+      }, {
+        router: '/play',
+        title: '播放器'
       }]
     }
   },

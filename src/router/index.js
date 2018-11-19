@@ -17,6 +17,8 @@ import emit from '@/pages/emit/emit'
 import remarks from '@/pages/emit/remarks/remarks'
 import elementTable from '@/pages/elementTable/elementTable.vue'
 import elementMenu from '@/pages/elementMenu/elementMenu.vue'
+import elementTab from '@/pages/elementTab/elementTab.vue'
+import pay from '@/pages/play/play.vue'
 
 Vue.use(Router)
 
@@ -93,6 +95,14 @@ export default new Router({
       path: '/elementMenu',
       name: 'elementMenu',
       component: elementMenu
+    }, {
+      path: '/elementTab',
+      name: 'elementTab',
+      component: elementTab
+    }, {
+      path: '/play',
+      name: 'play',
+      component: pay
     }
   ]
 })
