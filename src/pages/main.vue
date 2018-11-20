@@ -54,6 +54,9 @@ export default {
       }, {
         router: '/play',
         title: '播放器'
+      }, {
+        router: '/elementDate',
+        title: '日期选择器'
       }]
     }
   },

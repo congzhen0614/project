@@ -19,6 +19,7 @@ import elementTable from '@/pages/elementTable/elementTable.vue'
 import elementMenu from '@/pages/elementMenu/elementMenu.vue'
 import elementTab from '@/pages/elementTab/elementTab.vue'
 import pay from '@/pages/play/play.vue'
+import elementDate from '@/pages/elementDate/elementDate.vue'
 
 Vue.use(Router)
 
@@ -103,6 +104,10 @@ export default new Router({
       path: '/play',
       name: 'play',
       component: pay
+    }, {
+      path: '/elementDate',
+      name: 'elementDate',
+      component: elementDate
     }
   ]
 })
