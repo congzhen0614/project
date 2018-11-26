@@ -20,6 +20,7 @@ import elementMenu from '@/pages/elementMenu/elementMenu.vue'
 import elementTab from '@/pages/elementTab/elementTab.vue'
 import pay from '@/pages/play/play.vue'
 import elementDate from '@/pages/elementDate/elementDate.vue'
+import betterPicker from '@/pages/betterPicker/betterPicker.vue'
 
 Vue.use(Router)
 
@@ -108,6 +109,10 @@ export default new Router({
       path: '/elementDate',
       name: 'elementDate',
       component: elementDate
+    }, {
+      path: '/betterPicker',
+      name: 'betterPicker',
+      component: betterPicker
     }
   ]
 })

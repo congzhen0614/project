@@ -57,6 +57,9 @@ export default {
       }, {
         router: '/elementDate',
         title: '日期选择器'
+      }, {
+        router: '/betterPicker',
+        title: 'betterPicker'
       }]
     }
   },

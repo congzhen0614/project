@@ -1,26 +1,25 @@
 <template>
-  <div class="play" :class="{miniPlay: mini}" @click="mini = false">
-    <img class="mini-img" v-show="mini" src="../../../static/images/avatar.jpg">
+  <div class="play">
     <audio class="my-audio" ref="myAudio" controls="controls">
       <source src="../../../static/mp3/一个人去巴黎.mp3" type="audio/ogg" />
       <source src="../../../static/mp3/一个人去巴黎.mp3" type="audio/mpeg" />
     </audio>
-    <img class="close-icon" src="../../assets/play/close-icon.png" v-show="!mini"/>
-    <img class="mini-icon"  src="../../assets/play/mini-icon.png" @click.stop="mini = !mini" v-show="!mini"/>
-    <img class="play-icon"  src="../../assets/play/play-icon.png" @click="clickPlay" v-show="!play && !mini"/>
-    <img class="paus-icon"  src="../../assets/play/paus-icon.png" @click="clickPaus" v-show="play && !mini"/>
+    <img class="close-icon" src="../../assets/play/close-icon.png"/>
+    <img class="mini-icon"  src="../../assets/play/mini-icon.png"/>
+    <img class="play-icon"  src="../../assets/play/play-icon.png" @click="clickPlay" v-if="!play"/>
+    <img class="paus-icon"  src="../../assets/play/paus-icon.png" @click="clickPaus" v-if="play" />
     <!-- 进度条背景 -->
-    <div class="progress-bar-bg" :style="progressBarWidth" v-show="!mini">
+    <div class="progress-bar-bg" :style="progressBarWidth">
       <!-- 进度条进度 -->
-      <div class="progress-bar-jd" :style="{width: playWidth}" v-show="!mini"></div>
-      <div class="progress-bar-bs" :style="{left: playPlace}" v-show="!mini">
-        <img class="progress-bar-tp" src="../../../static/images/avatar.jpg" v-show="!mini"/>
+      <div class="progress-bar-jd" :style="{width: playWidth}"></div>
+      <div class="progress-bar-bs" :style="{left: playPlace}">
+        <img class="progress-bar-tp" src="../../../static/images/avatar.jpg"/>
       </div>
     </div>
     <!-- 进度条开始时间 -->
-    <div class="progress-bar-st" v-show="!mini">{{ lengthOfPlay }}</div>
+    <div class="progress-bar-st">{{ lengthOfPlay }}</div>
     <!-- 进度条结束时间 -->
-    <div class="progress-bar-et" v-show="!mini">{{ lengthOfSong }}</div>
+    <div class="progress-bar-et">{{ lengthOfSong }}</div>
   </div>
 </template>
 
@@ -35,7 +34,6 @@ export default {
       playWidth: '0%',
       playPlace: '0%',
       play: false,
-      mini: false,
       player: '',
       duration: '', // 歌曲长度
       currentTime: '' // 播放长度
@@ -46,9 +44,6 @@ export default {
   mounted () {
     this.lengthOfSong = 0
     this.lengthOfPlay = 0
-    this.$nextTick(() => {
-      this.clickPlay()
-    })
   },
   computed: {
     lengthOfSong: {
@@ -78,17 +73,21 @@ export default {
     },
     clickPlay () {
       let audio = this.$refs.myAudio
+      audio.defaultPlaybackRate = 2.0
       audio.load()
       audio.play()
       this.play = true
+      // 设置时间
       this.player = setInterval(() => {
+        // 音频总长度
         this.lengthOfSong = audio.duration
+        // 音频播放长度
         this.lengthOfPlay = audio.currentTime
         let str = (audio.currentTime / audio.duration * 100).toString()
         this.playPlace = this.playWidth = str.substring(0, str.indexOf('.') + 2) + '%'
+        // 判断播放结束
         if (audio.ended) {
-          clearInterval(this.player)
-          this.play = false
+          this.clickPaus()
         }
       }, 100)
     },
@@ -118,22 +117,6 @@ export default {
     background: rgba(248, 189, 72, 0.99);
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    transition: width 1s;
-    -moz-transition: width 1s;
-    -webkit-transition: width 1s;
-    -o-transition: width 1s;
-  }
-  .miniPlay {
-    width: 1.2rem;
-    height: 1.2rem;
-    border-radius: 50%;
-    border: 3px solid #FFFFFF;
-    background: rgba(248, 189, 72, 0.99);
-  }
-  .mini-img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
   }
   .close-icon, .mini-icon {
     float: right;
@@ -141,10 +124,6 @@ export default {
     height: 0.32rem;
     margin: 0.2rem;
     margin-bottom: 0;
-    transition: width 1s;
-    -moz-transition: width 1s;
-    -webkit-transition: width 1s;
-    -o-transition: width 1s;
   }
   .play-icon, .paus-icon {
     width: 0.8rem;
@@ -153,10 +132,6 @@ export default {
     left: 0.3rem;
     top: 50%;
     margin-top: -0.4rem;
-    transition: width 1s;
-    -moz-transition: width 1s;
-    -webkit-transition: width 1s;
-    -o-transition: width 1s;
   }
   .progress-bar-bg {
     height: 4px;
@@ -166,19 +141,11 @@ export default {
     margin-top: -2px;
     left: 1.55rem;
     top: 50%;
-    transition: width 1s;
-    -moz-transition: width 1s;
-    -webkit-transition: width 1s;
-    -o-transition: width 1s;
   }
   .progress-bar-jd {
     height: 4px;
     border-radius: 2px;
     background: #ffffff;
-    transition: width 1s;
-    -moz-transition: width 1s;
-    -webkit-transition: width 1s;
-    -o-transition: width 1s;
   }
   .progress-bar-bs {
     width: 0.52rem;
@@ -191,10 +158,6 @@ export default {
     margin-left: -0.3rem;
     position: absolute;
     top: 50%;
-    transition: width 1s;
-    -moz-transition: width 1s;
-    -webkit-transition: width 1s;
-    -o-transition: width 1s;
   }
   .progress-bar-tp {
     width: 100%;
@@ -206,23 +169,11 @@ export default {
     color: #655022;
     position: absolute;
     top: 70%;
-    transition: width 1s;
-    -moz-transition: width 1s;
-    -webkit-transition: width 1s;
-    -o-transition: width 1s;
   }
   .progress-bar-st {
     left: 1.4rem;
-    transition: width 1s;
-    -moz-transition: width 1s;
-    -webkit-transition: width 1s;
-    -o-transition: width 1s;
   }
   .progress-bar-et {
     right: 0.3rem;
-    transition: width 1s;
-    -moz-transition: width 1s;
-    -webkit-transition: width 1s;
-    -o-transition: width 1s;
   }
 </style>
