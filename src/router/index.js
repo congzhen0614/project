@@ -21,6 +21,7 @@ import elementTab from '@/pages/elementTab/elementTab.vue'
 import pay from '@/pages/play/play.vue'
 import elementDate from '@/pages/elementDate/elementDate.vue'
 import betterPicker from '@/pages/betterPicker/betterPicker.vue'
+import enter from '@/pages/enter/enter.vue'
 
 Vue.use(Router)
 
@@ -113,6 +114,10 @@ export default new Router({
       path: '/betterPicker',
       name: 'betterPicker',
       component: betterPicker
+    }, {
+      path: '/enter',
+      name: 'enter',
+      component: enter
     }
   ]
 })

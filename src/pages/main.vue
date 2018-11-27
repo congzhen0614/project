@@ -60,6 +60,9 @@ export default {
       }, {
         router: '/betterPicker',
         title: 'betterPicker'
+      }, {
+        router: '/enter',
+        title: 'Vue的enter事件'
       }]
     }
   },
