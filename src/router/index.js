@@ -4,6 +4,7 @@ import Router from 'vue-router'
 // 获取组件
 import main from '@/pages/main'
 import scroll from '@/pages/scroll/scroll'
+import seek from '@/pages/scroll/seek/seek.vue'
 import component from '@/pages/component/component'
 import geogPosition from '@/pages/position/position'
 import lazyLoad from '@/pages/lazyLoad/lazyLoad'
@@ -118,6 +119,10 @@ export default new Router({
       path: '/enter',
       name: 'enter',
       component: enter
+    }, {
+      path: '/seek',
+      name: 'seek',
+      component: seek
     }
   ]
 })
