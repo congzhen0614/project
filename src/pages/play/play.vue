@@ -9,11 +9,11 @@
     <img class="play-icon"  src="../../assets/play/play-icon.png" @click="clickPlay" v-if="!play"/>
     <img class="paus-icon"  src="../../assets/play/paus-icon.png" @click="clickPaus" v-if="play" />
     <!-- 进度条背景 -->
-    <div class="progress-bar-bg" :style="progressBarWidth">
+    <div class="progress-bar-bg" ref="bar" :style="progressBarWidth" @touchstart="touchstart">
       <!-- 进度条进度 -->
       <div class="progress-bar-jd" :style="{width: playWidth}"></div>
       <div class="progress-bar-bs" :style="{left: playPlace}">
-        <img class="progress-bar-tp" src="../../../static/images/avatar.jpg"/>
+        <img class="progress-bar-tp" @touchmove="touchmove" src="../../../static/images/avatar.jpg"/>
       </div>
     </div>
     <!-- 进度条开始时间 -->
@@ -73,7 +73,6 @@ export default {
     },
     clickPlay () {
       let audio = this.$refs.myAudio
-      audio.defaultPlaybackRate = 2.0
       audio.load()
       audio.play()
       this.play = true
@@ -96,6 +95,24 @@ export default {
       this.play = false
       audio.pause()
       clearInterval(this.player)
+    },
+    touchstart (e) {
+      const audioBox = this.$refs.bar
+      const audio = this.$refs.myAudio
+      let num = (e.touches[0].clientX - audioBox.offsetLeft) / audioBox.offsetWidth
+      if (num > 1) { num = 1 } else if (num < 0) { num = 0 }
+      this.playWidth = num * 100 + '%'
+      this.playPlace = num * 100 + '%'
+      audio.currentTime = audio.duration * num
+    },
+    touchmove (e) {
+      const audioBox = this.$refs.bar
+      const audio = this.$refs.myAudio
+      let num = (e.touches[0].clientX - audioBox.offsetLeft) / audioBox.offsetWidth
+      if (num > 1) { num = 1 } else if (num < 0) { num = 0 }
+      this.playWidth = num * 100 + '%'
+      this.playPlace = num * 100 + '%'
+      audio.currentTime = audio.duration * num
     }
   },
   watch: {
