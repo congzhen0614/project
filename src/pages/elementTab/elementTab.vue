@@ -1,8 +1,25 @@
 <template>
   <div class="element-tab">
-    <el-tabs editable type="border-card" v-model="activeName" @tab-click="handleClick" @edit="handleTabsEdit">
-      <el-tab-pane :label="item.name" :name="item.path" v-for="item in menu" :key="item.path"></el-tab-pane>
-    </el-tabs>
+    <nav class="tab-nav">
+      <ul>
+        <li class="navAct">
+          <span>首页</span>
+          <i class="el-icon-close"></i>
+        </li>
+        <li>
+          <span>杂志管理</span>
+          <i class="el-icon-close"></i>
+        </li>
+        <li>
+          <span>年龄管理</span>
+          <i class="el-icon-close"></i>
+        </li>
+        <li>
+          <span>分类管理</span>
+          <i class="el-icon-close"></i>
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
 
@@ -10,40 +27,37 @@
 export default {
   name: 'element-tab',
   data () {
-    return {
-      activeName: '/index1',
-      menu: [{
-        path: '/index1',
-        name: '杂志管理'
-      }, {
-        path: '/index2',
-        name: '新增杂志'
-      }, {
-        path: '/index3',
-        name: '修改杂志'
-      }, {
-        path: '/index4',
-        name: '删除杂志'
-      }]
-    }
+    return {}
   },
   methods: {
-    handleClick (tab) {
-      console.log(tab.name)
-    },
-    handleTabsEdit (targetName) {
-      this.menu.forEach((item, index) => {
-        if (item.path === targetName) {
-          this.menu.splice(index, 1)
-        }
-      })
-    }
   }
 }
 </script>
 
 <style>
-  .el-tabs__content {
-    display: none;
+  .tab-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f2f6fc;
+  }
+  .tab-nav li {
+    cursor: pointer;
+    height: 28px;
+    color: #909399;
+    padding: 0 5px;
+    line-height: 28px;
+  }
+  .tab-nav li i {
+    font-size: 12px;
+  }
+  .tab-nav li span {
+    font-size: 12px;
+  }
+  .tab-nav .navAct {
+    background-color: #FFFFFF;
+    color: #409eff;
+  }
+  .tab-nav li:hover {
+    color: #409eff;
   }
 </style>
