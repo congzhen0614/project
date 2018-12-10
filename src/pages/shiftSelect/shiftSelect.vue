@@ -61,7 +61,8 @@ export default {
             } else {
               indexMax = Math.max(...indexArr)
             }
-            for (var i = indexMin; i < indexMax; i++) {
+            this.form.ageId = []
+            for (var i = indexMin; i <= indexMax; i++) {
               let selected = false
               that.form.ageId.forEach(item => {
                 if (item === that.ageList[i].id) {
