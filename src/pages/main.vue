@@ -63,6 +63,9 @@ export default {
       }, {
         router: '/enter',
         title: 'Vue的enter事件'
+      }, {
+        router: '/shiftSelect',
+        title: 'shift多选'
       }]
     }
   },
