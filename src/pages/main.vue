@@ -66,6 +66,9 @@ export default {
       }, {
         router: '/shiftSelect',
         title: 'shift多选'
+      }, {
+        router: '/array',
+        title: '数组排列组合'
       }]
     }
   },

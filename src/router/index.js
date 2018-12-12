@@ -24,6 +24,7 @@ import elementDate from '@/pages/elementDate/elementDate.vue'
 import betterPicker from '@/pages/betterPicker/betterPicker.vue'
 import enter from '@/pages/enter/enter.vue'
 import shiftSelect from '@/pages/shiftSelect/shiftSelect.vue'
+import array from '@/pages/array/array.vue'
 
 Vue.use(Router)
 
@@ -128,6 +129,10 @@ export default new Router({
       path: '/shiftSelect',
       name: 'shiftSelect',
       component: shiftSelect
+    }, {
+      path: '/array',
+      name: 'array',
+      component: array
     }
   ]
 })

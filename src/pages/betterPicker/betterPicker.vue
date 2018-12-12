@@ -44,6 +44,8 @@ export default {
     })
     // 改变
     this.picker.on('picker.change', (index, selectedIndex) => {
+      console.log(index)
+      console.log(selectedIndex)
       this.tempIndex[index] = selectedIndex
       if (index > 1) return
       if (index === 0) {
