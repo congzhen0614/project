@@ -69,6 +69,9 @@ export default {
       }, {
         router: '/array',
         title: '数组排列组合'
+      }, {
+        router: '/search',
+        title: 'vue前端搜索'
       }]
     }
   },

@@ -25,6 +25,7 @@ import betterPicker from '@/pages/betterPicker/betterPicker.vue'
 import enter from '@/pages/enter/enter.vue'
 import shiftSelect from '@/pages/shiftSelect/shiftSelect.vue'
 import array from '@/pages/array/array.vue'
+import search from '@/pages/search/search.vue'
 
 Vue.use(Router)
 
@@ -133,6 +134,10 @@ export default new Router({
       path: '/array',
       name: 'array',
       component: array
+    }, {
+      path: '/search',
+      name: 'search',
+      component: search
     }
   ]
 })

@@ -33,24 +33,7 @@ export default {
         this.select[index] = []
       }
       this.select[index].push(item)
-      console.log(this.select) // 这里得到的数据就是那个方法需要的数据了
-      this.arrEach(this.select)
-    },
-    arrEach (arr) {
-      let results = []
-      let result = []
-      doArrchange(arr, 0)
-      function doArrchange(arr, index) {
-        for (var i = 0; i < arr[index].length; i++) {
-          result[index] = arr[index][i]
-          if (index != arr.length - 1) {
-            doArrchange(arr, index + 1)
-          } else {
-            results.push(result.join(','))
-          }
-        }
-      }
-      console.log(results)
+      console.log(this.select)
     }
   }
 }
