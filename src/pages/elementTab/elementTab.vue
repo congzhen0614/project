@@ -2,19 +2,19 @@
   <div class="element-tab">
     <nav class="tab-nav">
       <ul>
-        <li class="navAct">
+        <li class="navAct" @contextmenu.prevent="onMousedown">
           <span>首页</span>
           <i class="el-icon-close"></i>
         </li>
-        <li>
+        <li @contextmenu.prevent="onMousedown">
           <span>杂志管理</span>
           <i class="el-icon-close"></i>
         </li>
-        <li>
+        <li @contextmenu.prevent="onMousedown">
           <span>年龄管理</span>
           <i class="el-icon-close"></i>
         </li>
-        <li>
+        <li @contextmenu.prevent="onMousedown">
           <span>分类管理</span>
           <i class="el-icon-close"></i>
         </li>
@@ -30,6 +30,9 @@ export default {
     return {}
   },
   methods: {
+    onMousedown () {
+      console.log('点击右键')
+    }
   }
 }
 </script>
