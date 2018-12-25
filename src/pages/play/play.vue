@@ -84,6 +84,7 @@ export default {
         this.lengthOfPlay = audio.currentTime
         let str = (audio.currentTime / audio.duration * 100).toString()
         this.playPlace = this.playWidth = str.substring(0, str.indexOf('.') + 2) + '%'
+        this.playCache = audio.buffered.end(audio.buffered.length - 1) / audio.duration * 100 + '%'
         // 判断播放结束
         if (audio.ended) {
           this.clickPaus()

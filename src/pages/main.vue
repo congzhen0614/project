@@ -72,6 +72,9 @@ export default {
       }, {
         router: '/search',
         title: 'vue前端搜索'
+      }, {
+        router: '/video',
+        title: 'vue视频播放'
       }]
     }
   },

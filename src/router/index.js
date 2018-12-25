@@ -26,6 +26,7 @@ import enter from '@/pages/enter/enter.vue'
 import shiftSelect from '@/pages/shiftSelect/shiftSelect.vue'
 import array from '@/pages/array/array.vue'
 import search from '@/pages/search/search.vue'
+import video from '@/pages/video/video.vue'
 
 Vue.use(Router)
 
@@ -138,6 +139,10 @@ export default new Router({
       path: '/search',
       name: 'search',
       component: search
+    }, {
+      path: '/video',
+      name: 'video',
+      component: video
     }
   ]
 })
