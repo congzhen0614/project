@@ -6,13 +6,16 @@
 </template>
 
 <script>
+// let bookList = require('../../../static/data/bookList.xlsx')
 export default {
   name: 'vue-enter',
   components: {},
   data () {
-    return {}
+    return {
+    }
   },
   created () {
+    // conosle.log(bookList)
   },
   mounted () {
   },
